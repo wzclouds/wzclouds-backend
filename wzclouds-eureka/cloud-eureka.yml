@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{MODULE}}
+  name: {{MODULE}}
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  #      nodePort: 8080
+  selector:
+    app: {{MODULE}}
+  type: ClusterIP
+#  type: NodePort
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{MODULE}}-deploy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: {{MODULE}}
+    spec:
+      containers:
+        - name: {{MODULE}}
+          image: reg.zkhy.com:1443/{{PROJECT}}/{{MODULE}}:{{VERSION}}
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 640Mi
+            requests:
+              cpu: 500m
+              memory: 256Mi
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /data/projects
+              name: log-path
+      volumes:
+        - name: log-path
+          hostPath:
+            path: /data/projects
+      imagePullSecrets:
+        - name: registrykey-regzkhy
+#      nodeSelector:
+#        kubernetes.io/hostname: 192.168.1.142

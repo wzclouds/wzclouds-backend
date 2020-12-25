@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.wzclouds.online.dao.MeetingMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.github.wzclouds.online.entity.Meeting">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="descs" jdbcType="VARCHAR" property="descs"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="owner" jdbcType="BIGINT" property="owner"/>
+        <result column="tags" jdbcType="VARCHAR" property="tags"/>
+        <result column="ispassword" jdbcType="BIT" property="ispassword"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="max_client" jdbcType="INTEGER" property="maxClient"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_user, create_time, update_user, update_time, 
+        name, descs, end_time, owner, tags, ispassword, password, max_client
+    </sql>
+
+</mapper>

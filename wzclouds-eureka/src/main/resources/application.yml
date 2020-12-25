@@ -1,0 +1,54 @@
+wzclouds:
+  hostname:
+    eureka: 127.0.0.1
+
+server:
+  port: 11005   # eureka 端口号
+  servlet:
+    context-path: /${spring.application.name}
+
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: USER
+
+eureka:
+  environment: dev
+  datacenter: linux
+  client:
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${wzclouds.hostname.eureka}:11005${server.servlet.context-path}/eureka/
+    registerWithEureka: false  # 单机模式 设置为false
+    fetchRegistry: false       # 单机模式 设置为false
+  instance:
+    status-page-url-path: ${server.servlet.context-path}${management.endpoints.web.base-path}/info
+    health-check-url-path: ${server.servlet.context-path}${management.endpoints.web.base-path}/health
+    ip-address: ${wzclouds.hostname.eureka}
+    instance-id: ${wzclouds.hostname.eureka}:${server.port}${server.servlet.context-path}
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+  dashboard:
+    path: /
+
+
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+      enabled: true
+
+info:
+  name: "@project.name@"
+  description: "@project.description@"
+  version: "@project.version@"
+  spring-boot-version: "@spring.boot.version@"
+  spring-cloud-version: "@spring.cloud.version@"

@@ -1,0 +1,33 @@
+wzclouds:
+  file:
+    storage-path: E:\data\projects\uploadfile\file\online
+  mysql:
+    master:
+      ip: 127.0.0.1
+      port: 3306
+      driverClassName: com.mysql.cj.jdbc.Driver
+      database: wzclouds_defaults
+      username: root
+      password: 6162659
+      url: jdbc:mysql://${wzclouds.mysql.master.ip}:${wzclouds.mysql.master.port}/${wzclouds.mysql.master.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
+    biz:
+      ip: 106.54.254.212
+      port: 3306
+      driverClassName: com.mysql.cj.jdbc.Driver
+      database: wzclouds_online
+      username: root
+      password: 6162659
+      url: jdbc:mysql://${wzclouds.mysql.biz.ip}:${wzclouds.mysql.biz.port}/${wzclouds.mysql.biz.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
+  redis:
+    ip: ${REDIS_IP:106.54.254.212}
+    username: root
+    password: 6162659
+  database:
+    multi-tenant-type:  datasource
+#
+#server:
+#  ssl:
+#    protocol: TLS
+#    key-store: classpath:server.p12
+#    key-store-password: 6162659
+#    key-store-type: PKCS12

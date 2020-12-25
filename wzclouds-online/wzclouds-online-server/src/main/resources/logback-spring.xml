@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="com/github/wzclouds/log/logback/wzclouds-defaults.xml"/>
+
+    <springProfile name="default,docker">
+        <logger name="com.github.wzclouds.online.controller" additivity="true" level="${log.level.controller}">
+            <appender-ref ref="ASYNC_CONTROLLER_APPENDER"/>
+        </logger>
+        <logger name="com.github.wzclouds.online.service" additivity="true" level="${log.level.service}">
+            <appender-ref ref="ASYNC_SERVICE_APPENDER"/>
+        </logger>
+        <logger name="com.github.wzclouds.online.dao" additivity="false" level="${log.level.dao}">
+            <appender-ref ref="ASYNC_DAO_APPENDER"/>
+        </logger>
+    </springProfile>
+
+    <springProfile name="dev,test">
+        <logger name="com.github.wzclouds.online.controller" additivity="true" level="${log.level.controller}">
+            <appender-ref ref="CONTROLLER_APPENDER"/>
+        </logger>
+        <logger name="com.github.wzclouds.online.service" additivity="true" level="${log.level.service}">
+            <appender-ref ref="SERVICE_APPENDER"/>
+        </logger>
+    </springProfile>
+</configuration>

@@ -1,0 +1,5 @@
+wzclouds:
+  redis:
+    ip: ${REDIS_IP:106.54.254.212}
+    username: root
+    password: 6162659

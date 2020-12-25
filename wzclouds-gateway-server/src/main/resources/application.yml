@@ -1,0 +1,45 @@
+wzclouds:
+  nginx:
+    ip: ${NGINX_IP:${spring.cloud.client.ip-address}}
+    port: ${NGINX_PORT:443}
+  eureka:
+    context-path: /wzclouds-eureka
+    ip: ${EUREKA_IP:${spring.cloud.client.ip-address}}
+    port: ${EUREKA_PORT:11005}
+  redis:
+    ip: ${REDIS_IP:${spring.cloud.client.ip-address}}
+    password: SbtyMveYNfLzTks7H0apCmyStPzWJqjy
+    port: ${REDIS_PORT:6379}
+    database: 0
+
+server:
+  servlet:
+    context-path: /api
+  port: 11001
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: online
+          uri: lb://wzclouds-online-server
+          predicates:
+            - Path=/online/**
+          filters:
+            - StripPrefix=1
+      descovery:
+        locator:
+          enable: true
+          lower-case-service-id: true
+#      default-filters:
+#        - name: Hystrix
+#          args:
+#            name: default
+#            fallbackUri: 'forward:/fallback'
+
+info:
+  name: "@project.name@"
+  description: "@project.description@"
+  version: "@project.version@"
+  spring-boot-version: "@spring.boot.version@"
+  spring-cloud-version: "@spring.cloud.version@"

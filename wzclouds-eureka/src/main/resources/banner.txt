@@ -1,0 +1,23 @@
+${AnsiColor.BRIGHT_YELLOW}
+    __________________________________________________________________________________
+   |                              _                                                   |
+   |                            >"/                             .   '                 |
+   |                           /'/   ,        '                  '  '                 |
+   |      ,--,.  ,    .     ' /'/                    ,                                |
+   |     'v ;.`-. \::/  <      ,  ' /:                                                |
+   |        \\`. `.'`. `-'<;-".i"+.    , /:'                                          |
+   |         \\ `. x"_":,-'",-'.-`-u._-'. `=.','`'-._                                 |
+   |     ' .'c;-" -.^,-' . .'  x,.-+-Y.c._"-._:=.     ,                               |
+   |       ;'. .-"-.`.  ,-: ,-"v`-._Y-.`-.""`---'                                     |
+   |      <_ -"doo `v' / `.".-'"-'_ "-<:-.:-._      ,                                 |
+   |       2"-:    .C'". _,`;-",'._"`-.=+:"--.:-.                                     |
+   |     ,: P  Y,c"  "i,^)_.+-<==.,__-'-..:_--.';"\                                   |
+   |   .'c`+..='"i".._ ,-" _.+;,x;;.-""``--+::_/  .>                                  |
+   | .C.,-"=``.  ;-"  '`"`'  ,'",''            """'                                   |
+   |/   +  . _:-"                                                                     |
+  .' .:::)_.'           dHHHHHP dHHHP dHHHHHHP  dHP   dHP dHHHHHHP dHHHHHHP dHHHHHHP  |
+ / .::;:-'             dHP      dHP  dHP       dHP   dHP    dHP   dHP      dHP   dHP  |
+/_;:-"                dHHHHHP  dHP  dHP  dddP dHHHHHHHP    dHP   dHHHHHHP dHHHHHHHP   |
+"  `---------------- dHP      dHP  dHP    dP dHP   dHP    dHP   dHP      dHP   dHP  --'
+                    dHP     dHHHP dHHHHHHHP dHP   dHP    dHP   dHHHHHHP dHP    dHP
+${AnsiColor.DEFAULT}

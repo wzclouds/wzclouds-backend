@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: wzclouds-eureka
+
+logging:
+  path: /data/projects/logs/${spring.application.name}

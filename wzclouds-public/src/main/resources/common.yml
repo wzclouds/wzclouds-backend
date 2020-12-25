@@ -1,0 +1,112 @@
+wzclouds:
+  swagger:
+    enabled: true
+    license: Powered By wzclouds
+    licenseUrl: https://github.com/wzclouds
+    termsOfServiceUrl: https://github.com/wzclouds
+    version: 2.5.1
+    contact:
+      url: https://github.com/wzclouds
+      name: wz
+      email: 470382668@qq.com
+    # apiKeys: # api key 不能设置默认参数，所以调整到全局参数中
+    #   - name: 用户身份token
+    #     keyname: token
+    #     passAs: header
+    global-operation-parameters:
+      - name: token
+        description: 用户身份token
+        modelRef: String
+        parameterType: header
+        required: true
+        # 默认值只是方便本地开发时，少填参数，生产环境请禁用swagger或者禁用默认参数
+        defaultValue: "Bearer test"
+      - name: Authorization
+        description: 客户端信息
+        modelRef: String
+        parameterType: header
+        required: true
+        defaultValue: "Basic enVpaG91X3VpOnp1aWhvdV91aV9zZWNyZXQ="
+      - name: tenant
+        description: 租户编码
+        modelRef: String
+        parameterType: header
+        required: true
+        defaultValue: "MDAwMA=="
+
+spring:
+  security:
+      user:
+        name: admin
+        password: admin
+        roles: USER
+#  redis:
+#      host: ${REDIS_IP:106.54.254.212}
+#      port: 6379
+#      password: wz6162659
+#      database: 0
+
+eureka:
+  instance:
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/doc.html
+    status-page-url-path: ${server.servlet.context-path:}${management.endpoints.web.base-path:}/info
+    health-check-url-path: ${server.servlet.context-path:}${management.endpoints.web.base-path:}/health
+    preferIpAddress: true
+    ip-address: ${spring.cloud.client.ip-address}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.application.name} #服务主机名
+    appname: ${spring.application.name} #服务名称，默认为 unknow 这里直接取 spring.application.name 了
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
+      swagger: http://${spring.cloud.client.ip-address}:${server.port}/swagger-resources
+      service.name: 服务
+  client:
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${wzclouds.eureka.ip}:${wzclouds.eureka.port}${wzclouds.eureka.context-path}/eureka/
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+      enabled: true
+
+j2cache:
+  #  config-location: /j2cache.properties
+  open-spring-cache: true
+  cache-clean-mode: passive
+  allow-null-values: true
+  redis-client: lettuce
+  l2-cache-open: true
+  # l2-cache-open: false     # 关闭二级缓存
+  broadcast: net.oschina.j2cache.cache.support.redis.SpringRedisPubSubPolicy
+  #  broadcast: jgroups       # 关闭二级缓存
+  L1:
+    provider_class: caffeine
+  L2:
+    provider_class: net.oschina.j2cache.cache.support.redis.SpringRedisProvider
+    config_section: lettuce
+  sync_ttl_to_redis: true
+  default_cache_null_object: false
+  serialization: fst
+caffeine:
+  properties: /j2cache/caffeine.properties   # 这个配置文件需要放在项目中
+lettuce:
+  mode: single
+  namespace: ''
+  storage: generic
+  channel: j2cache
+  scheme: redis
+  hosts: ${wzclouds.redis.ip}:${wzclouds.redis.port}
+  password: ${wzclouds.redis.password}
+  database: ${wzclouds.redis.database}
+  sentinelMasterId: ''
+  maxTotal: 100
+  maxIdle: 10
+  minIdle: 10
+  timeout: 10000

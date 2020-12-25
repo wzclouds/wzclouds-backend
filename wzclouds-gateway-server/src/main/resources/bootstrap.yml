@@ -1,0 +1,21 @@
+wzclouds:
+  log:
+    enabled: false
+  ignore:
+    token:
+      - /ds/**
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profile.active@
+  config:
+    additional-location: classpath:/common.yml
+
+# 用于/actuator/info
+info:
+  name: '@project.name@'
+  description: '@project.description@'
+  version: '@project.version@'

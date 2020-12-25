@@ -1,0 +1,9 @@
+hengyun:
+  hostname:
+    eureka: ${EUREKA_IP:cloud-eureka}
+
+eureka:
+  server:
+    enable-self-preservation: false # 关闭自我保护
+server:
+  port: 8080

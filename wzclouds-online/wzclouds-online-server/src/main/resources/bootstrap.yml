@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: @profile.active@
+  config:
+    additional-location: classpath:/common.yml
+
+logging:
+  path: /data/projects/logs

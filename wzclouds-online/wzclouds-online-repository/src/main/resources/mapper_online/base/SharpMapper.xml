@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.wzclouds.online.dao.SharpMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.github.wzclouds.online.entity.Sharp">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="path_num" jdbcType="LONGVARCHAR" property="pathNum"/>
+        <result column="color" jdbcType="VARCHAR" property="color"/>
+        <result column="thinkness" jdbcType="INTEGER" property="thinkness"/>
+        <result column="x" jdbcType="DOUBLE" property="x"/>
+        <result column="y" jdbcType="DOUBLE" property="y"/>
+        <result column="scale_x" jdbcType="DOUBLE" property="scaleX"/>
+        <result column="scale_y" jdbcType="DOUBLE" property="scaleY"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="meeting_id" jdbcType="BIGINT" property="meetingId"/>
+        <result column="cent_point_num" jdbcType="VARCHAR" property="centPointNum"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, update_time, create_user, update_user, 
+        type, path_num, color, thinkness, x, y, scale_x, scale_y, url, meeting_id, cent_point_num
+    </sql>
+
+</mapper>

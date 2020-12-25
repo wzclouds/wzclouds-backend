@@ -1,0 +1,76 @@
+wzclouds:
+  file:
+    storage-path: /data/projects/uploadfile/file/online
+    uriPrefix: https://${wzclouds.nginx.ip}:${wzclouds.nginx.port}/file/online/ # 本地
+  nginx:
+    ip: ${NGINX_IP:${spring.cloud.client.ip-address}}
+    port: ${NGINX_PORT:443}
+  redis:
+    ip: ${REDIS_IP:${spring.cloud.client.ip-address}}
+    password: SbtyMveYNfLzTks7H0apCmyStPzWJqjy
+    port: ${REDIS_PORT:6379}
+    database: 0
+  mysql:
+    master:
+      ip: 127.0.0.1
+      port: 3306
+      driverClassName: com.mysql.cj.jdbc.Driver
+      database: wzclouds_defaults
+      username: root
+      password: 6162659
+      url: jdbc:mysql://${wzclouds.mysql.master.ip}:${wzclouds.mysql.master.port}/${wzclouds.mysql.master.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
+    biz:
+      ip: 192.168.1.124
+      port: 3306
+      driverClassName: com.mysql.cj.jdbc.Driver
+      database: wzclouds_online
+      username: root
+      password: 6162659
+      url: jdbc:mysql://${wzclouds.mysql.biz.ip}:${wzclouds.mysql.biz.port}/${wzclouds.mysql.biz.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
+  eureka:
+    context-path: /wzclouds-eureka
+    ip: ${EUREKA_IP:${spring.cloud.client.ip-address}}
+    port: ${EUREKA_PORT:11005}
+  swagger:
+      enabled: true
+      docket:
+        base:
+          title: 基础接口
+          base-package: com.github.wzclouds.base
+        online:
+          title: 业务接口
+          base-package: com.github.wzclouds.online
+server:
+  servlet:
+    context-path:
+  port: 11200
+
+spring:
+  datasource:
+    master:
+      username: ${wzclouds.mysql.master.username}
+      password: ${wzclouds.mysql.master.password}
+      driver-class-name: ${wzclouds.mysql.master.driverClassName}
+      url: jdbc:mysql://${wzclouds.mysql.master.ip}:${wzclouds.mysql.master.port}/${wzclouds.mysql.master.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
+      db-type: mysql
+    biz:
+      username: ${wzclouds.mysql.biz.username}
+      password: ${wzclouds.mysql.biz.password}
+      driver-class-name: ${wzclouds.mysql.biz.driverClassName}
+      url: jdbc:mysql://${wzclouds.mysql.biz.ip}:${wzclouds.mysql.biz.port}/${wzclouds.mysql.biz.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
+      db-type: mysql
+
+authentication:
+  user:
+    header-name: token
+#    expire: 600               # 外部token有效期
+    expire: 7200               # 外部token有效期
+    refresh-expire: 7200               # 刷新token有效期
+    pri-key: client/pri.key    # 加密
+    pub-key: client/pub.key    # 解密
+
+# 用于/actuator/info
+info:
+  name: '@project.name@'
+  description: '@project.description@'
+  version: '@project.version@'
