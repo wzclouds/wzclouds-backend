@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>wzclouds-gateway-server</artifactId>
+    <artifactId>wzclouds-gateway</artifactId>
     <name>${project.artifactId}</name>
     <description>网关服务启动模块</description>
 

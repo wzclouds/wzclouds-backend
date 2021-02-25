@@ -40,11 +40,6 @@ spring:
         name: admin
         password: admin
         roles: USER
-#  redis:
-#      host: ${REDIS_IP:106.54.254.212}
-#      port: 6379
-#      password: wz6162659
-#      database: 0
 
 eureka:
   instance:

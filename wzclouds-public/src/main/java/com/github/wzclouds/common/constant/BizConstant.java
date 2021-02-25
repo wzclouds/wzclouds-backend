@@ -61,13 +61,7 @@ public interface BizConstant {
      */
     String LOGIN_STATUS = "T";
 
-    String AUTHORITY = "wzclouds-authority-server";
-    String FILE = "wzclouds-file-server";
-    String MSGS = "wzclouds-msgs-server";
-    String OAUTH = "wzclouds-oauth-server";
-    String GATE = "wzclouds-gateway-server";
-    String ORDER = "wzclouds-order-server";
-    String DEMO = "wzclouds-demo-server";
+    String GATE = "wzclouds-gateway";
 
     /**
      * 初始化数据源时json的参数，

@@ -13,7 +13,7 @@
 	<modules>
 		<module>wzclouds-public</module>
 		<module>wzclouds-eureka</module>
-		<module>wzclouds-gateway-server</module>
+		<module>wzclouds-gateway</module>
 		<module>wzclouds-online</module>
 	</modules>
 
