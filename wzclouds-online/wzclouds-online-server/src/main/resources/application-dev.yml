@@ -8,7 +8,7 @@ wzclouds:
       driverClassName: com.mysql.cj.jdbc.Driver
       database: wzclouds_defaults
       username: root
-      password: 6162659
+      password: 123456
       url: jdbc:mysql://${wzclouds.mysql.master.ip}:${wzclouds.mysql.master.port}/${wzclouds.mysql.master.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
     biz:
       ip: 127.0.0.1
@@ -19,9 +19,9 @@ wzclouds:
       password: 123456
       url: jdbc:mysql://${wzclouds.mysql.biz.ip}:${wzclouds.mysql.biz.port}/${wzclouds.mysql.biz.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
   redis:
-    ip: ${REDIS_IP:127.0.0.1}
-    username: root
-    password: 123456
+      ip: ${REDIS_IP:127.0.0.1}
+      username: root
+      password: 123456
   database:
     multi-tenant-type:  datasource
 #
@@ -29,5 +29,5 @@ wzclouds:
 #  ssl:
 #    protocol: TLS
 #    key-store: classpath:server.p12
-#    key-store-password: 6162659
+#    key-store-password: 123456
 #    key-store-type: PKCS12

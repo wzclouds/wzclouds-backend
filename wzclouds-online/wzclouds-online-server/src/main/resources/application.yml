@@ -6,8 +6,8 @@ wzclouds:
     ip: ${NGINX_IP:${spring.cloud.client.ip-address}}
     port: ${NGINX_PORT:443}
   redis:
-    ip: ${REDIS_IP:${spring.cloud.client.ip-address}}
-    password: SbtyMveYNfLzTks7H0apCmyStPzWJqjy
+    ip: ${REDIS_IP:127.0.0.1}
+    password: 123456
     port: ${REDIS_PORT:6379}
     database: 0
   mysql:
@@ -17,15 +17,15 @@ wzclouds:
       driverClassName: com.mysql.cj.jdbc.Driver
       database: wzclouds_defaults
       username: root
-      password: 6162659
+      password: 123456
       url: jdbc:mysql://${wzclouds.mysql.master.ip}:${wzclouds.mysql.master.port}/${wzclouds.mysql.master.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
     biz:
-      ip: 192.168.1.124
+      ip: 127.0.0.1
       port: 3306
       driverClassName: com.mysql.cj.jdbc.Driver
       database: wzclouds_online
       username: root
-      password: 6162659
+      password: 123456
       url: jdbc:mysql://${wzclouds.mysql.biz.ip}:${wzclouds.mysql.biz.port}/${wzclouds.mysql.biz.database}?serverTimezone=CTT&characterEncoding=utf8&useUnicode=true&useSSL=false&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&nullCatalogMeansCurrent=true
   eureka:
     context-path: /wzclouds-eureka
